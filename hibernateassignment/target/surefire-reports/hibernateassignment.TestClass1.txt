@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: hibernateassignment.TestClass1
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 2, Time elapsed: 8.289 sec <<< FAILURE!
+setup(hibernateassignment.TestClass1)  Time elapsed: 7.898 sec  <<< FAILURE!
+org.hibernate.AnnotationException: Use of @OneToMany or @ManyToMany targeting an unmapped class: com.hcl.model.Customer.CustomerFeedbacks[com.hcl.model.CustomerFeedback]
+	at org.hibernate.cfg.annotations.CollectionBinder.bindManyToManySecondPass(CollectionBinder.java:1253)
+	at org.hibernate.cfg.annotations.CollectionBinder.bindStarToManySecondPass(CollectionBinder.java:810)
+	at org.hibernate.cfg.annotations.CollectionBinder$1.secondPass(CollectionBinder.java:735)
+	at org.hibernate.cfg.CollectionSecondPass.doSecondPass(CollectionSecondPass.java:54)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1640)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1608)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:278)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:83)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:417)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:86)
+	at org.hibernate.boot.MetadataSources.buildMetadata(MetadataSources.java:179)
+	at hibernateassignment.TestClass1.setup(TestClass1.java:26)
+
