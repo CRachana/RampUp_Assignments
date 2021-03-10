@@ -1,0 +1,15 @@
+PLSQL-USER PROFILES 
+
+Minimal Tables :
+User: It contain 6 Columns named user_id (PRIMARY KEY) , first_name, last_name, date_of_birth, age ,user_status.
+This is the Main Table to the entire database named as userprofiles.
+
+Address: It contain 4 columns named door_no, street_name, city, country.
+
+Contact_Info: It contain 3 columns named mobile_number, alternate_mobile_number,
+email_id.
+
+Usecase :
+1. Create procedure/func to CRUD a user
+2. Create procedure to update user status to child, adult, senior provided his age is 0<>18<>60
+				

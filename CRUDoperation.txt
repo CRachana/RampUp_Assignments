@@ -1,0 +1,63 @@
+CRUD OPERATION USING STORED PROCEDURE
+
+--read operation--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crud_display`()
+BEGIN
+SELECT first_name, last_name, date_of_birth, age
+FROM user
+WHERE (age>=10)
+ORDER BY age DESC;
+END
+
+--insert operation---
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crud_insert`()
+BEGIN
+insert into user(user_id, first_name, last_name, date_of_birth, age)
+VALUES('3', 'john', 'wick', '1990-09-01', '30');
+insert into user(user_id, first_name, last_name, date_of_birth, age)
+VALUES('4', 'rachana', 'sekar', '1999-09-01', '20');
+insert into user(user_id, first_name, last_name, date_of_birth, age)
+VALUES('5', 'chandra', 'sekar', '1960-09-01', '61');
+END
+
+--update operation--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crud_update`()
+BEGIN
+update userprofile.user
+set last_name = 'priyan'
+where user_id = '1';
+END
+
+---delete operation--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crud_delete`()
+BEGIN
+DELETE FROM user WHERE user_id ='1';
+END
+
+---for checking and updating the user status ( as child, adult, senior)in the table---
+CREATE DEFINER=`root`@`localhost` PROCEDURE `user_procedure`(
+IN puser_id VARCHAR(30),
+OUT user_status VARCHAR(30))
+BEGIN
+DECLARE  user_age INT DEFAULT 0;
+SELECT age 
+INTO user_age 
+FROM user
+WHERE user_id= puser_id;
+
+  IF  user_age >=0 AND user_age <= 18 THEN
+	UPDATE  user	SET user_status = 'child' WHERE user_id= puser_id;
+    ELSEIF user_age < 60 AND user_age > 18 THEN
+    UPDATE  user    SET user_status  = 'adult' WHERE user_id= puser_id;
+    ELSE
+     UPDATE  user   SET user_status = 'senior'  WHERE user_id= puser_id;
+    END IF;
+    IF  user_age >=0 AND user_age <= 18 THEN
+	SET user_status = 'child' ;
+    ELSEIF user_age < 60 AND user_age > 18 THEN
+    SET user_status  = 'adult';
+    ELSE
+	SET user_status = 'senior';
+    END IF;
+
+END
